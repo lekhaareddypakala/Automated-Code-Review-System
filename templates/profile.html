@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Profile</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>👤 My Profile</h1>
+
+
+<h2>User Details</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>Name</th>
+<td>{{ user[0] }}</td>
+</tr>
+
+<tr>
+<th>Email</th>
+<td>{{ user[1] }}</td>
+</tr>
+
+<tr>
+<th>Username</th>
+<td>{{ user[2] }}</td>
+</tr>
+
+<tr>
+<th>Joined Date</th>
+<td>{{ user[3] }}</td>
+</tr>
+
+</table>
+
+
+<br>
+
+
+<h2>Performance</h2>
+
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>Total Reviews</th>
+<td>{{ total_reviews }}</td>
+</tr>
+
+<tr>
+<th>Highest Marks</th>
+<td>{{ highest_marks }}/100</td>
+</tr>
+
+<tr>
+<th>Average Marks</th>
+<td>{{ average_marks }}/100</td>
+</tr>
+
+<tr>
+<th>Leaderboard Rank</th>
+<td>{{ rank }}</td>
+</tr>
+
+</table>
+
+
+<br><br>
+
+
+<a href="{{ url_for('dashboard') }}">
+← Back to Dashboard
+</a>
+
+
+</div>
+
+</body>
+
+</html>

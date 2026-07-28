@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Statistics</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>My Statistics</h1>
+
+<table border="1" cellpadding="12">
+
+<tr>
+    <th>Statistic</th>
+    <th>Value</th>
+</tr>
+
+<tr>
+    <td>Total Reviews</td>
+    <td>{{ total_reviews }}</td>
+</tr>
+
+<tr>
+    <td>Highest Marks</td>
+    <td>{{ highest_marks }}/100</td>
+</tr>
+
+<tr>
+    <td>Average Marks</td>
+    <td>{{ average_marks }}/100</td>
+</tr>
+
+<tr>
+    <td>Syntax Errors</td>
+    <td>{{ syntax_errors }}</td>
+</tr>
+
+<tr>
+    <td>Runtime Errors</td>
+    <td>{{ runtime_errors }}</td>
+</tr>
+
+<tr>
+    <td>Successful Programs</td>
+    <td>{{ successful_programs }}</td>
+</tr>
+
+</table>
+
+<br><br>
+
+<a href="{{ url_for('dashboard') }}">
+Back to Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>

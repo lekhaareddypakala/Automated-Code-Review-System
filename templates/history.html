@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Review History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>Review History</h1>
+
+{% if history %}
+
+<table border="1" cellpadding="10">
+
+<tr>
+
+<th>Review ID</th>
+<th>Date</th>
+<th>Syntax</th>
+<th>Runtime</th>
+<th>Marks</th>
+
+</tr>
+
+{% for row in history %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+<td>{{ row[4] }}/100</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<h3>No reviews found.</h3>
+
+{% endif %}
+
+<br><br>
+
+<a href="{{ url_for('dashboard') }}">
+Back to Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>

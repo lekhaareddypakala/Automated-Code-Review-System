@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Review Code</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+<h1>Automated Code Review System</h1>
+
+<h2>Python Code Review</h2>
+
+
+<form action="{{ url_for('review') }}" method="POST">
+
+
+<textarea
+name="code"
+rows="20"
+cols="100"
+placeholder="Write your Python code here..."
+required>{{ reviewed_code }}</textarea>
+
+
+<br><br>
+
+
+<button type="submit">
+    Review Code
+</button>
+
+
+<button type="button"
+onclick="window.location.href='{{ url_for('review') }}'">
+    Clear Code
+</button>
+
+
+</form>
+
+
+
+
+{% if result %}
+
+
+<hr>
+
+
+<h2>Review Result</h2>
+
+
+<!-- Marks -->
+
+{% if result.marks is defined %}
+
+<h3 style="color:blue;">
+⭐ Marks: {{ result.marks }}/100
+</h3>
+
+{% endif %}
+
+
+
+
+
+<!-- Syntax Checking -->
+
+
+{% if result.status == "error" %}
+
+
+<h3 style="color:red;">
+❌ Syntax Error
+</h3>
+
+
+<p>
+<b>Line Number:</b>
+{{ result.line }}
+</p>
+
+
+<p>
+<b>Error:</b>
+{{ result.message }}
+</p>
+
+
+
+
+{% if result.details is defined %}
+
+
+<hr>
+
+
+<h3>📌 Issue</h3>
+
+<p>
+{{ result.details.issue }}
+</p>
+
+
+<h3>📖 Explanation</h3>
+
+<p>
+{{ result.details.explanation }}
+</p>
+
+
+<h3>❓ Why did this happen?</h3>
+
+<p>
+{{ result.details.reason }}
+</p>
+
+
+<h3>🛠 How to Fix</h3>
+
+<p>
+{{ result.details.solution }}
+</p>
+
+
+<h3>✅ Correct Example</h3>
+
+<pre>
+{{ result.details.example }}
+</pre>
+
+
+{% endif %}
+
+
+
+{% else %}
+
+
+
+<h3 style="color:green;">
+✅ No Syntax Errors Found
+</h3>
+
+
+
+{% endif %}
+
+
+
+
+
+
+<!-- Runtime Checking -->
+
+
+{% if result.runtime is defined %}
+
+
+<hr>
+
+
+<h2>Execution Result</h2>
+
+
+
+
+{% if result.runtime.status == "success" %}
+
+
+<h3 style="color:green;">
+✅ Program Executed Successfully
+</h3>
+
+
+<p>
+<b>Output:</b>
+</p>
+
+
+<pre>
+{{ result.runtime.output }}
+</pre>
+
+
+
+{% else %}
+
+
+
+<h3 style="color:red;">
+❌ Runtime Error
+</h3>
+
+
+<p>
+<b>Error:</b>
+</p>
+
+
+<pre>
+{{ result.runtime.error }}
+</pre>
+
+
+
+
+{% if result.runtime_details is defined %}
+
+
+<hr>
+
+
+<h3>📌 Issue</h3>
+
+<p>
+{{ result.runtime_details.issue }}
+</p>
+
+
+<h3>📖 Explanation</h3>
+
+<p>
+{{ result.runtime_details.explanation }}
+</p>
+
+
+<h3>❓ Why did this happen?</h3>
+
+<p>
+{{ result.runtime_details.reason }}
+</p>
+
+
+<h3>🛠 How to Fix</h3>
+
+<p>
+{{ result.runtime_details.solution }}
+</p>
+
+
+<h3>✅ Correct Example</h3>
+
+<pre>
+{{ result.runtime_details.example }}
+</pre>
+
+
+{% endif %}
+
+
+
+{% endif %}
+
+
+{% endif %}
+
+
+
+
+
+
+<!-- Code Quality -->
+
+
+{% if result.quality is defined %}
+
+
+<hr>
+
+
+<h2>📋 Code Quality Analysis</h2>
+
+
+{% if result.quality|length == 0 %}
+
+
+<p style="color:green;">
+✅ No code quality issues found.
+</p>
+
+
+{% else %}
+
+
+<p>
+Code quality analysis completed.
+</p>
+
+
+{% endif %}
+
+
+{% endif %}
+
+
+
+
+
+
+<!-- Advanced Analysis -->
+
+
+{% if result.advanced is defined %}
+
+
+<hr>
+
+
+<h2>🔍 Code Analysis</h2>
+
+
+<p>
+Your code has been analysed successfully.
+</p>
+
+
+{% endif %}
+
+
+
+
+
+{% endif %}
+
+
+
+<br><br>
+
+
+<a href="{{ url_for('dashboard') }}">
+← Back to Dashboard
+</a>
+
+
+
+</div>
+
+
+</body>
+
+
+</html>

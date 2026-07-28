@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <h1>Automated Code Review System</h1>
+
+    <h2>Welcome, {{ username }}</h2>
+
+    <div class="cards">
+
+        <a href="/review" class="card">
+            <h3>📝 Review Code</h3>
+            <p>Analyze Python Code</p>
+        </a>
+
+        <a href="/history" class="card">
+            <h3>📜 Review History</h3>
+            <p>View Previous Reviews</p>
+        </a>
+
+        <a href="/statistics" class="card">
+            <h3>📊 My Statistics</h3>
+            <p>Your Progress</p>
+        </a>
+
+        <a href="/leaderboard" class="card">
+            <h3>🏆 Leaderboard</h3>
+            <p>Top Students</p>
+        </a>
+
+       
+
+        <a href="/profile" class="card">
+            <h3>👤 My Profile</h3>
+            <p>User Information</p>
+        </a>
+
+        <a href="/logout" class="card">
+            <h3>🚪 Logout</h3>
+            <p>Exit</p>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

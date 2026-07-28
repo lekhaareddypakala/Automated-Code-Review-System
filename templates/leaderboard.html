@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Leaderboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>🏆 Leaderboard</h1>
+
+{% if leaderboard %}
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>Rank</th>
+    <th>Student</th>
+    <th>Average Marks</th>
+    <th>Total Reviews</th>
+</tr>
+
+{% for row in leaderboard %}
+
+<tr>
+
+    <td>{{ loop.index }}</td>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}/100</td>
+    <td>{{ row[2] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<h3>No review data available.</h3>
+
+{% endif %}
+
+<br><br>
+
+<a href="{{ url_for('dashboard') }}">
+Back to Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>
